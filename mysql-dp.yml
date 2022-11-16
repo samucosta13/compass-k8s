@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-dp
+  labels:
+    app: mysql-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql-app
+  template:
+    metadata:
+      labels:
+        app: mysql-app
+    spec:
+      volumes:
+        - name: mysql-persistent-storage-lab
+          hostPath:
+            path: YOUR_PATH
+      containers:
+      - name: mysql-pod
+        image: mysql:8
+        ports:
+        - containerPort: 3308
+        volumeMounts:
+          - name: mysql-persistent-storage-lab 
+            mountPath: "/var/lib/mysql"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
