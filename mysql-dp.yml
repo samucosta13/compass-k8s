@@ -17,7 +17,7 @@ spec:
       volumes:
         - name: mysql-persistent-storage-lab
           hostPath:
-            path: YOUR_PATH
+            path: /home/sam/compass-k8s/testes/volume
       containers:
       - name: mysql-pod
         image: mysql:8
