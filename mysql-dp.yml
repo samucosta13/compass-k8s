@@ -20,9 +20,6 @@ spec:
       containers:
         - name: mysql-containers
           image: mysql:8.0.31
-          #envFrom:
-            #- secretRef:
-                #name: mysql-secret
           env: 
             - name: MYSQL_USER
               valueFrom:
