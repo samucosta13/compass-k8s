@@ -21,7 +21,7 @@ spec:
         - name: mysql-containers
           image: mysql:8.0.31
           env: 
-            - name: MYSQL_USER
+            - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
