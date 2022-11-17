@@ -15,7 +15,7 @@ spec:
       volumes:
         - name: volume
           hostPath: 
-            path: " HOST_PATH "
+            path: ...
             type: DirectoryOrCreate
       containers:
         - name: mysql-containers
