@@ -1,0 +1,25 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: wordpress
+spec: 
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      volumes:
+        - name: volume-teste
+          hostPath: 
+            path: "/host_mnt/c/users/arquivos/estagio/volume-teste"
+            type: DirectoryOrCreate
+      containers:
+        - name: wordpress-container
+          image: wordpress:6.0.2
+          volumeMounts:
+            - name: volume-teste
+              mountPath: "/var/www/html"
+  selector:
+    matchLabels:
+      app: wordpress
+  replicas: 2
