@@ -15,7 +15,7 @@ spec:
       volumes:
         - name: volume
           persistentVolumeClaim: 
-            claimName: mysql-pvc
+            claimName: pvc
       containers:
         - name: mysql-container
           image: mysql:8.0.31
