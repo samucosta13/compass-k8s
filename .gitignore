@@ -1,4 +1,5 @@
 mysql/
 wordpress/
 testes/
-secret.yml
+mysql-secret.yml
+wordpress-secret.yml
