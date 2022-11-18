@@ -16,6 +16,9 @@ spec:
       containers:
         - name: wordpress-container
           image: wordpress:6.0.2
+          envFrom:
+            - secretRef:
+                name: wordpress-secret
           volumeMounts:
             - name: volume-teste
               mountPath: "/var/www/html"
