@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mysql-pv
+  name: wordpress-pv
   labels:
-    type: mysql-pv
+    app: wordpress-pv
 spec:
   capacity:
     storage: 3Gi
@@ -12,7 +12,7 @@ spec:
   - ReadWriteMany
   persistentVolumeReclaimPolicy: Delete
   local:
-    path: /mysql-volume
+    path: /wordpress-volume
   nodeAffinity:
     required:
       nodeSelectorTerms:

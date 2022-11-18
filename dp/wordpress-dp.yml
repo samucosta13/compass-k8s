@@ -9,15 +9,14 @@ spec:
         app: wordpress
     spec:
       volumes:
-        - name: volume-teste
-          hostPath: 
-            path: "/host_mnt/c/users/arquivos/estagio/volume-teste"
-            type: DirectoryOrCreate
+        - name: mysql-persistent-storage-lab
+          persistentVolumeClaim: 
+            claimName: pvc
       containers:
         - name: wordpress-container
           image: wordpress:6.0.2
           volumeMounts:
-            - name: volume-teste
+            - name: mysql-persistent-storage-lab
               mountPath: "/var/www/html"
   selector:
     matchLabels:

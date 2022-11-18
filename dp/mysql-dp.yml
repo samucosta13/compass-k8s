@@ -13,7 +13,7 @@ spec:
         app: mysql
     spec:
       volumes:
-        - name: volume
+        - name: mysql-persistent-storage-lab
           persistentVolumeClaim: 
             claimName: pvc
       containers:
@@ -23,5 +23,5 @@ spec:
             - secretRef:
                 name: mysql-secret
           volumeMounts:
-            - name: volume
+            - name: mysql-persistent-storage-lab
               mountPath: "/var/lib/mysql"

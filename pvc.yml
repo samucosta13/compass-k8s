@@ -11,3 +11,4 @@ spec:
   selector:
     matchLabels:
       type: mysql-pv
+      app: wordpress-pv
