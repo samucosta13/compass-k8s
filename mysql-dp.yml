@@ -14,9 +14,8 @@ spec:
     spec:
       volumes:
         - name: volume
-          hostPath: 
-            path: ...
-            type: DirectoryOrCreate
+          persistentVolumeClaim: 
+            claimName: mysql-pvc
       containers:
         - name: mysql-container
           image: mysql:8.0.31
