@@ -24,7 +24,8 @@ Implantação de uma aplicação do Wordpress em um cluster com Kubernetes
 
 ## Iniciando o cluster com Kubernetes
 ### Minikube
-No terminal, inicie um novo cluster com o comando `minikube start`. Caso seja solicitado, execute `minikube delete` antes de iniciar o cluster.
+No terminal, inicie um novo cluster com o comando `minikube start`.
+> Caso seja solicitado, execute `minikube delete` antes de iniciar o cluster.
 
 ### Docker Desktop
 ...
