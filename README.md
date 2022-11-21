@@ -40,9 +40,11 @@ Inicialmente, você precisará editar os templates disponibilizados no diretóri
 
 O arquivo `wordpress-secret.yml` refere-se às variáveis de ambiente do Wordpress, ao passo que o arquivo `mysql-secret.yml` refere-se às variáveis do MySQL Server. Defina os valores delas nos arquivos e, caso queira versionar seu ambiente, retire os Secrets do diretório versionado ou adicione o nome deles no .gitignore (ou correspondente), para não vazar informações sensíveis da sua aplicação.
 
-Após editar os templates e resguardá-los, crie os secrets no seu cluster Kubernetes:
+Após editar os templates e resguardá-los, crie os dois Secrets no seu cluster Kubernetes:
 
-`kubectl create secret-wp.yml`
+`kubectl create -f secret-wp.yml`
+
+`kubectl create -f secret-wp.yml`
 
 ### Segundo passo: PV e PVC
 
