@@ -21,6 +21,7 @@ Implantação de uma aplicação do Wordpress em um cluster com Kubernetes
 * Definir o Docker como o executor de containers do Minikube
   > Para isso, execute `minikube config set driver docker`
 
+
 ## Iniciando o cluster com Kubernetes
 ### Minikube
 No terminal, inicie um novo cluster com o comando `minikube start`. Caso seja solicitado, execute `minikube delete` antes de iniciar o cluster.
