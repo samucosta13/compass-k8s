@@ -20,3 +20,28 @@ Implantação de uma aplicação do Wordpress em um cluster com Kubernetes
   > Ferramenta que permite executar o Kubernetes localmente
 * Definir o Docker como o executor de containers do Minikube
   > Para isso, execute `minikube config set driver docker`
+
+## Iniciando o cluster com Kubernetes
+### Minikube
+No terminal, inicie um novo cluster com o comando `minikube start`. Caso seja solicitado, execute `minikube delete` antes de iniciar o cluster.
+
+### Docker Desktop
+...
+
+## Implantando a infraestrutura da aplicação
+Nesta etapa, você irá utilizar o **kubectl** e o conteúdo deste repositório.
+
+Para executar comandos com o kubectl, você pode utilizar o prompt de comando do Windows, o terminal do Linux ou qualquer IDE de sua preferência que forneça algum terminal, como o Visual Studio Code.
+
+### Primeiro passo: Secret
+
+### Segundo passo: PV e PVC
+
+### Terceiro passo: Services
+
+### Quarto passo: Deployments
+
+### Quinto passo: Ingress
+
+## Acessando a aplicação
+...
