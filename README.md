@@ -38,7 +38,11 @@ Para executar comandos com o kubectl, você pode utilizar o prompt de comando do
 ### Primeiro passo: Secrets
 Inicialmente, você precisará editar os templates disponibilizados no diretório *templates/* deste repositório. Eles são arquivos YAML responsáveis pela criação das variáveis de ambiente que serão utilizadas pelo Wordpress e pelo MySQL. Escolhemos o tipo "Secret" pois ele criptografa o valor das variáveis de ambiente, caso sejam visualizadas por um `kubectl get secret`.
 
-O arquivo `secret-wp.yml` refere-se às variáveis de ambiente do Wordpress, ao passo que o arquivo `secret-mysql.yml` refere-se às do MySQL Server.
+O arquivo `wordpress-secret.yml` refere-se às variáveis de ambiente do Wordpress, ao passo que o arquivo `mysql-secret.yml` refere-se às variáveis do MySQL Server. Defina os valores delas nos arquivos e, caso queira versionar seu ambiente, retire os Secrets do diretório versionado ou adicione o nome deles no .gitignore (ou correspondente), para não vazar informações sensíveis da sua aplicação.
+
+Após editar os templates e resguardá-los, crie os secrets no seu cluster Kubernetes:
+
+`kubectl create secret-wp.yml`
 
 ### Segundo passo: PV e PVC
 
