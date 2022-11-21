@@ -34,7 +34,10 @@ Nesta etapa, você irá utilizar o **kubectl** e o conteúdo deste repositório.
 
 Para executar comandos com o kubectl, você pode utilizar o prompt de comando do Windows, o terminal do Linux ou qualquer IDE de sua preferência que forneça algum terminal, como o Visual Studio Code.
 
-### Primeiro passo: Secret
+### Primeiro passo: Secrets
+Inicialmente, você precisará editar os templates disponibilizados no diretório *templates/* deste repositório. Eles são arquivos YAML responsáveis pela criação das variáveis de ambiente que serão utilizadas pelo Wordpress e pelo MySQL. Escolhemos o tipo "Secret" pois ele criptografa o valor das variáveis de ambiente, caso sejam visualizadas por um `kubectl get secret`.
+
+O arquivo `secret-wp.yml` refere-se às variáveis de ambiente do Wordpress, ao passo que o arquivo `secret-mysql.yml` refere-se às do MySQL Server.
 
 ### Segundo passo: PV e PVC
 
