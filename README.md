@@ -71,11 +71,7 @@ Os PVs estão no diretório `persistentVolumes/`, ao passo que os PVCs se encont
 
 
 ### Quarto passo: Services
-Para permitir acesso entre objetos do Kubernetes, e também acessos de origem externa a eles, usa-se serviços. O ClusterIP opera dentro do cluster, liberando a comunicação interna entre seus objetos. O Ingress possibilita o acesso a objetos do cluster a partir de urls ou endereçamento IP.
-
-O arquivo YAML do Ingress é o `ingress.yml`. Para criá-lo, execute o comando `kubectl create -f ingress.yml`.
-
-Os arquivos do CLusterIP referentes aos pods do Wordpress e do MySQL estão no diretório `services/`. Para criar os serviços a partir deles, execute os comandos:
+Para permitir acesso entre PODs no cluster, usa-se serviços. O ClusterIP é um tipo de serviço do Kubernetes que opera dentro do cluster, liberando a comunicação interna entre seus objetos. Os arquivos do CLusterIP referentes aos pods do Wordpress e do MySQL estão no diretório `services/`. Para criar os serviços a partir deles, execute os comandos:
 
 `kubectl create -f services/wordpress.yml`
 
@@ -92,6 +88,7 @@ Configurados os volumes, serviços e o namespace onde será implantada a aplica�
 `kubectl create -f deployments/wordpress.yml`
 
 ### Sexto passo: Ingress
+Para acessarmos a aplicação do Wordpress a partir de um navegador (externo ao cluster) é preciso viabilizar que POD do Wordpress responda a requisições externas, e uma maneira de fazer isso é utilizar um Ingress. No diretório corrente (docker-dektop ou minikube), existe um arquivo YAML que define um Ingress, que é o `ingress.yml`. Para criá-lo, execute o comando `kubectl create -f ingress.yml`.
 
 ## Acessando a aplicação
 ...
