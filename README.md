@@ -59,9 +59,13 @@ Agora, é preciso criar volumes para persistência dos dados dos containers da a
 Os PVs estão no diretório `persistentVolumes/`, ao passo que os PVCs se encontram em `persistentVolumeClaims/`. Para criá-los, execute os comandos:
 
 `kubectl create -f persistentVolumes/wordpress.yml`
+
 `kubectl create -f persistentVolumes/mysql.yml`
+
 `kubectl create -f persistentVolumeClaims/wordpress.yml`
+
 `kubectl create -f persistentVolumeClaims/mysql.yml`
+
 
 ### Quarto passo: Services
 
