@@ -83,7 +83,7 @@ Os arquivos do CLusterIP referentes aos pods do Wordpress e do MySQL estão no d
 
 
 ### Quinto passo: Deployments
-Configurados os volumes, serviços e o namespace onde será implantada a aplicação no cluster, crie os deployments do Wordpress e do MySQL, que irão criar os containers e garantir a sua disponibilidade utilizando a arquitetura do Kubernetes. Execute os seguintes comandos:
+Configurados os volumes, serviços e o namespace onde será implantada a aplicação no cluster, crie os deployments do Wordpress e do MySQL, que irão criar os containers e garantir a sua disponibilidade utilizando ReplicaSets (replicadores do Kubernetes). Execute os seguintes comandos:
 
 `kubectl create -f deployments/mysql.yml`
 > Recomendamos criar o deployment do MySQL primeiro, para depois criar o da aplicação, pois esta precisará utilizar um banco de dados do MySQL Server
