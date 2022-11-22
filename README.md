@@ -47,7 +47,7 @@ Após o namespace `labwordpress` ter sido criado, você precisará editar os tem
 
 O arquivo `wordpress-secret.yml` refere-se às variáveis de ambiente do Wordpress, ao passo que o arquivo `mysql-secret.yml` refere-se às variáveis do MySQL Server. Defina os valores delas nos arquivos e, caso queira versionar seu ambiente, retire os Secrets do diretório versionado ou adicione o nome deles no .gitignore (ou correspondente), para não vazar informações sensíveis da sua aplicação.
 
-Após editar os templates e resguardá-los, dentro do diretório onde os arquivos estão, crie os dois Secrets no seu cluster Kubernetes:
+Após editar os templates e resguardá-los, crie os dois Secrets no seu cluster Kubernetes, executando os seguintes comandos dentro do diretório onde estão os dois arquivos:
 
 `kubectl create -f wordpress-secret.yml`
 
