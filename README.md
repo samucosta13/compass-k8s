@@ -71,7 +71,7 @@ Os PVs estão no diretório `persistentVolumes/`, ao passo que os PVCs se encont
 
 
 ### Quarto passo: Services
-Para permitir acesso entre objetos do cluster, e também acessos de origem externa ao cluster, utiliza-se serviços. O ClusterIP opera dentro do cluster, liberando a comunicação entre objetos internos. O Ingress possibilita o acesso ao cluster a partir de urls.
+Para permitir acesso entre objetos do Kubernetes, e também acessos de origem externa a eles, usa-se serviços. O ClusterIP opera dentro do cluster, liberando a comunicação interna entre seus objetos. O Ingress possibilita o acesso a objetos do cluster a partir de urls ou endereçamento IP.
 
 O arquivo YAML do Ingress é o `ingress.yml`. Para criá-lo, execute o comando `kubectl create -f ingress.yml`.
 
