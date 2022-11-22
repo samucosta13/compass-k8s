@@ -1,27 +1,29 @@
-apiVersion: apps/v1
+apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: mysql
+  name: wordpress
+  namespace: labwordpress
 spec:
-  replicas: 1
+  replicas: 2 
   selector:
     matchLabels:
-      app: mysql
+      app: wordpress
   template:
     metadata:
       labels:
-        app: mysql
+        app: wordpress
     spec:
       volumes:
         - name: mysql-persistent-storage-lab
           persistentVolumeClaim: 
-            claimName: pvc
+            claimName: wordpress
       containers:
-        - name: mysql-container
-          image: mysql:8.0.31
+        - name: wordpress-container
+          image: wordpress:6.0.2
           envFrom:
             - secretRef:
-                name: mysql-secret
+                name: wordpress-secret
           volumeMounts:
             - name: mysql-persistent-storage-lab
-              mountPath: "/var/lib/mysql"
+              mountPath: "/var/www/html"
+
