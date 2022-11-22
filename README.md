@@ -35,24 +35,31 @@ Nesta etapa, você irá utilizar o **kubectl** e o conteúdo deste repositório.
 
 Para executar comandos com o kubectl, você pode utilizar o prompt de comando do Windows, o terminal do Linux ou qualquer IDE de sua preferência que forneça algum terminal, como o Visual Studio Code.
 
-### Primeiro passo: Secrets
-Inicialmente, você precisará editar os templates disponibilizados no diretório *templates/* deste repositório. Eles são arquivos YAML responsáveis pela criação das variáveis de ambiente que serão utilizadas pelo Wordpress e pelo MySQL. Escolhemos o tipo "Secret" pois ele criptografa o valor das variáveis de ambiente, caso sejam visualizadas por um `kubectl get secret`.
+### Primeiro passo: Namespace
+Inicialmente, você deve criar um *namespace* para implantar os objetos da aplicação dentro dele. Ele funciona como um cluster virtual, onde você pode isolar um ambiente de trabalho para objetivos específicos.
+
+No diretório `namespace/` crie o namespace `labwordpress` a partir do arquivo YAML que o define (`labwordpress.yml`). Para isso, execute o comando:
+
+`kubectl create -f labwordpress.yml`
+
+### Segundo passo: Secrets
+Após o namespace `labwordpress` ter sido criado, você precisará editar os templates disponibilizados no diretório `templates/`. Eles são arquivos YAML responsáveis pela criação das variáveis de ambiente que serão utilizadas pelo Wordpress e pelo MySQL. Escolhemos o tipo "Secret" pois ele criptografa o valor das variáveis de ambiente, caso sejam visualizadas por um `kubectl get secret`.
 
 O arquivo `wordpress-secret.yml` refere-se às variáveis de ambiente do Wordpress, ao passo que o arquivo `mysql-secret.yml` refere-se às variáveis do MySQL Server. Defina os valores delas nos arquivos e, caso queira versionar seu ambiente, retire os Secrets do diretório versionado ou adicione o nome deles no .gitignore (ou correspondente), para não vazar informações sensíveis da sua aplicação.
 
 Após editar os templates e resguardá-los, crie os dois Secrets no seu cluster Kubernetes:
 
-`kubectl create -f secret-wp.yml`
+`kubectl create -f wordpress-secret.yml`
 
-`kubectl create -f secret-wp.yml`
+`kubectl create -f mysql-secret.yml`
 
-### Segundo passo: PV e PVC
+### Terceiro passo: PV e PVC
 
-### Terceiro passo: Services
+### Quarto passo: Services
 
-### Quarto passo: Deployments
+### Quinto passo: Deployments
 
-### Quinto passo: Ingress
+### Sexto passo: Ingress
 
 ## Acessando a aplicação
 ...
