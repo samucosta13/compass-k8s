@@ -21,4 +21,4 @@ spec:
         - key: kubernetes.io/no-proviser
           operator: In
           values:
-           - docker-desktop
+           - minikube
