@@ -35,6 +35,8 @@ Nesta etapa, você irá utilizar o **kubectl** e o conteúdo deste repositório.
 
 Para executar comandos com o kubectl, você pode utilizar o prompt de comando do Windows, o terminal do Linux ou qualquer IDE de sua preferência que forneça algum terminal, como o Visual Studio Code.
 
+Neste repositório, você encontra dois diretórios principais: `docker-dektop/` e `minikube/`. Eles se destinam a usuários do Docker Desktop no Windows e do Minikube no Linux, respectivamente. Acesse o que lhe diz respeito antes de passar para os próximos passos.
+
 
 ### Primeiro passo: Namespace
 Inicialmente, você deve criar um namespace para implantar os objetos da aplicação dentro dele. Ele funciona como um cluster virtual, onde você pode isolar um ambiente de trabalho para objetivos específicos.
