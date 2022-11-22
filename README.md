@@ -88,7 +88,9 @@ Configurados os volumes, serviços e o namespace onde será implantada a aplica�
 `kubectl create -f deployments/wordpress.yml`
 
 ### Sexto passo: Ingress
-Para acessarmos a aplicação do Wordpress a partir de um navegador (externo ao cluster) é preciso viabilizar que POD do Wordpress responda a requisições externas, e uma maneira de fazer isso é utilizar um Ingress. No diretório corrente (`docker-dektop/` ou `minikube/`), existe um arquivo YAML que define um Ingress, que é o `ingress.yml`. Para criá-lo, execute o comando `kubectl create -f ingress.yml`.
+Para acessarmos a aplicação do Wordpress a partir de um navegador (externo ao cluster) é preciso viabilizar que POD do Wordpress responda a requisições externas, e uma maneira de fazer isso é utilizar um Ingress. No diretório corrente (`docker-dektop/` ou `minikube/`), existe um arquivo YAML que define um Ingress, que é o `ingress.yml`. Neste arquivo, encontra-se uma URL a partir da qual o acesso ao Wordpress será feito. Você pode editá-la!
+
+Para criar o Ingress, execute o comando `kubectl create -f ingress.yml`.
 
 ## Acessando a aplicação
-...
+Após constuir a infraestrutura do cluster, é hora de acessar a interface do Wordpress. Para isso, abra algum navegador e digite na barra de endereços a URL que se encontra no arquivo do seu Ingress. E pronto! Agora você consegue utilizar sua aplicação do Wordpress tranquilamente!
