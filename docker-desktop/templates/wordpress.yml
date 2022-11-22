@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+type: Opaque
+stringData:
+  WORDPRESS_DB_HOST: mysql
+  WORDPRESS_DB_USER: user
+  WORDPRESS_DB_NAME: banco
+  WORDPRESS_DB_PASSWORD: senha do user aqui

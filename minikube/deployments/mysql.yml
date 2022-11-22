@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: labwordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      volumes:
+        - name: mysql-persistent-storage-lab
+          persistentVolumeClaim: 
+            claimName: mysql
+      containers:
+        - name: mysql-container
+          image: mysql:8.0.31
+          envFrom:
+            - secretRef:
+                name: mysql
+          volumeMounts:
+            - name: mysql-persistent-storage-lab
+              mountPath: "/var/lib/mysql"
