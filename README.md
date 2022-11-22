@@ -51,13 +51,13 @@ O arquivo `wordpress.yml` refere-se às variáveis de ambiente do Wordpress, ao 
 
 Após editar os templates e resguardá-los, crie os dois Secrets no seu cluster Kubernetes a partir dos dois arquivos YAML, executando os seguintes comandos:
 
-`kubectl create -f [DIRETÓRIO]/wordpress.yml`
+`kubectl create -f [DIRETÓRIO DO SECRET]/wordpress.yml`
 
-`kubectl create -f [DIRETÓRIO]/mysql.yml`
+`kubectl create -f [DIRETÓRIO DO SECRET]/mysql.yml`
 
 
 ### Terceiro passo: PV e PVC
-Agora, é preciso criar volumes para persistência dos dados dos containers da aplicação e do banco de dados. Uma possível solução é criar Persistent Volumes (PVs) que são diretórios no cluster sincronizados com diretórios dentro dos containers, e também os Persistent Volume Claims (PVCs) resquisições para esses volumes, respectivamente.
+Agora, é preciso criar volumes para persistência dos dados dos containers da aplicação e do banco de dados. Uma possível solução é criar Persistent Volumes (PVs), que são diretórios no cluster sincronizados com diretórios dentro dos containers, e também criar Persistent Volume Claims (PVCs), que são resquisições para esses volumes.
 
 Os PVs estão no diretório `persistentVolumes/`, ao passo que os PVCs se encontram em `persistentVolumeClaims/`. Para criá-los, execute os comandos:
 
