@@ -35,12 +35,16 @@ Nesta etapa, você irá utilizar o **kubectl** e o conteúdo deste repositório.
 
 Para executar comandos com o kubectl, você pode utilizar o prompt de comando do Windows, o terminal do Linux ou qualquer IDE de sua preferência que forneça algum terminal, como o Visual Studio Code.
 
+Neste repositório, você encontra dois diretórios principais: `docker-dektop/` e `minikube/`. Eles se destinam a usuários do Docker Desktop no Windows e do Minikube no Linux, respectivamente. Acesse o que lhe diz respeito antes de passar para os próximos passos.
+
+
 ### Primeiro passo: Namespace
 Inicialmente, você deve criar um namespace para implantar os objetos da aplicação dentro dele. Ele funciona como um cluster virtual, onde você pode isolar um ambiente de trabalho para objetivos específicos.
 
-No diretório `namespace/` crie o namespace `labwordpress` a partir do arquivo YAML que o define (`labwordpress.yml`). Para isso, execute o comando:
+Crie o namespace `labwordpress` a partir do arquivo YAML que se encontra no diretório `namespace/`. Para isso, execute o comando:
 
-`kubectl create -f labwordpress.yml`
+`kubectl create -f namespace/labwordpress.yml`
+
 
 ### Segundo passo: Secrets
 Após o namespace `labwordpress` ter sido criado, você precisará editar os templates disponibilizados no diretório `templates/`. Eles são arquivos YAML responsáveis pela criação das variáveis de ambiente que serão utilizadas pelo Wordpress e pelo MySQL. Escolhemos o tipo "Secret" pois ele criptografa o valor das variáveis de ambiente, caso sejam visualizadas por um `kubectl get secret`.
@@ -49,12 +53,13 @@ O arquivo `wordpress.yml` refere-se às variáveis de ambiente do Wordpress, ao 
 
 Após editar os templates e resguardá-los, crie os dois Secrets no seu cluster Kubernetes a partir dos dois arquivos YAML, executando os seguintes comandos:
 
-`kubectl create -f [DIRETÓRIO]/wordpress.yml`
+`kubectl create -f [DIRETÓRIO DO SECRET]/wordpress.yml`
 
-`kubectl create -f [DIRETÓRIO]/mysql.yml`
+`kubectl create -f [DIRETÓRIO DO SECRET]/mysql.yml`
+
 
 ### Terceiro passo: PV e PVC
-Agora, é preciso criar volumes para persistência dos dados dos containers da aplicação e do banco de dados. Uma possível solução é criar Persistent Volumes (PVs) que são diretórios no cluster sincronizados com diretórios dentro dos containers, e também os Persistent Volume Claims (PVCs) resquisições para esses volumes, respectivamente.
+Agora, é preciso criar volumes para persistência dos dados dos containers da aplicação e do banco de dados. Uma possível solução é criar Persistent Volumes (PVs), que são diretórios no cluster sincronizados com diretórios dentro dos containers, e também criar Persistent Volume Claims (PVCs), que são resquisições para esses volumes.
 
 Os PVs estão no diretório `persistentVolumes/`, ao passo que os PVCs se encontram em `persistentVolumeClaims/`. Para criá-los, execute os comandos:
 
@@ -68,10 +73,26 @@ Os PVs estão no diretório `persistentVolumes/`, ao passo que os PVCs se encont
 
 
 ### Quarto passo: Services
+Para permitir acesso entre PODs no cluster, usa-se serviços. O ClusterIP é um tipo de serviço do Kubernetes que opera dentro do cluster, liberando a comunicação interna entre seus objetos. Os arquivos do CLusterIP referentes aos pods do Wordpress e do MySQL estão no diretório `services/`. Para criar os serviços a partir deles, execute os comandos:
+
+`kubectl create -f services/wordpress.yml`
+
+`kubectl create -f services/mysql.yml`
+
 
 ### Quinto passo: Deployments
+Configurados os volumes, serviços e o namespace onde será implantada a aplicação no cluster, crie os deployments do Wordpress e do MySQL, que irão criar os containers e garantir a sua disponibilidade utilizando ReplicaSets (replicadores do Kubernetes). Execute os seguintes comandos:
+
+`kubectl create -f deployments/mysql.yml`
+> Recomendamos criar o deployment do MySQL primeiro, para depois criar o da aplicação, pois esta precisará utilizar um banco de dados do MySQL Server
+
+
+`kubectl create -f deployments/wordpress.yml`
 
 ### Sexto passo: Ingress
+Para acessarmos a aplicação do Wordpress a partir de um navegador (externo ao cluster) é preciso viabilizar que POD do Wordpress responda a requisições externas, e uma maneira de fazer isso é utilizar um Ingress. No diretório corrente (`docker-dektop/` ou `minikube/`), existe um arquivo YAML que define um Ingress, que é o `ingress.yml`. Neste arquivo, encontra-se uma URL a partir da qual o acesso ao Wordpress será feito. Você pode editá-la!
+
+Para criar o Ingress, execute o comando `kubectl create -f ingress.yml`.
 
 ## Acessando a aplicação
-...
+Após constuir a infraestrutura do cluster, é hora de acessar a interface do Wordpress. Para isso, abra algum navegador e digite na barra de endereços a URL que se encontra no arquivo do seu Ingress. E pronto! Agora você consegue utilizar sua aplicação do Wordpress tranquilamente!
