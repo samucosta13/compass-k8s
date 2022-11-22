@@ -88,7 +88,8 @@ Configurados os volumes, serviços e o namespace onde será implantada a aplica�
 `kubectl create -f deployments/mysql.yml`
 > Recomendamos criar o deployment do MySQL primeiro, para depois criar o da aplicação, pois esta precisará utilizar um banco de dados do MySQL Server
 
-`kubectl create -f deployments/wordpress,yml`
+
+`kubectl create -f deployments/wordpress.yml`
 
 ### Sexto passo: Ingress
 
