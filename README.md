@@ -35,12 +35,14 @@ Nesta etapa, você irá utilizar o **kubectl** e o conteúdo deste repositório.
 
 Para executar comandos com o kubectl, você pode utilizar o prompt de comando do Windows, o terminal do Linux ou qualquer IDE de sua preferência que forneça algum terminal, como o Visual Studio Code.
 
+
 ### Primeiro passo: Namespace
 Inicialmente, você deve criar um namespace para implantar os objetos da aplicação dentro dele. Ele funciona como um cluster virtual, onde você pode isolar um ambiente de trabalho para objetivos específicos.
 
-No diretório `namespace/` crie o namespace `labwordpress` a partir do arquivo YAML que o define (`labwordpress.yml`). Para isso, execute o comando:
+Crie o namespace `labwordpress` a partir do arquivo YAML que se encontra no diretório `namespace/`. Para isso, execute o comando:
 
-`kubectl create -f labwordpress.yml`
+`kubectl create -f namespace/labwordpress.yml`
+
 
 ### Segundo passo: Secrets
 Após o namespace `labwordpress` ter sido criado, você precisará editar os templates disponibilizados no diretório `templates/`. Eles são arquivos YAML responsáveis pela criação das variáveis de ambiente que serão utilizadas pelo Wordpress e pelo MySQL. Escolhemos o tipo "Secret" pois ele criptografa o valor das variáveis de ambiente, caso sejam visualizadas por um `kubectl get secret`.
@@ -52,6 +54,7 @@ Após editar os templates e resguardá-los, crie os dois Secrets no seu cluster 
 `kubectl create -f [DIRETÓRIO]/wordpress.yml`
 
 `kubectl create -f [DIRETÓRIO]/mysql.yml`
+
 
 ### Terceiro passo: PV e PVC
 Agora, é preciso criar volumes para persistência dos dados dos containers da aplicação e do banco de dados. Uma possível solução é criar Persistent Volumes (PVs) que são diretórios no cluster sincronizados com diretórios dentro dos containers, e também os Persistent Volume Claims (PVCs) resquisições para esses volumes, respectivamente.
@@ -68,8 +71,24 @@ Os PVs estão no diretório `persistentVolumes/`, ao passo que os PVCs se encont
 
 
 ### Quarto passo: Services
+Para permitir acesso entre objetos do cluster, e também acessos de origem externa ao cluster, utiliza-se serviços. O ClusterIP opera dentro do cluster, liberando a comunicação entre objetos internos. O Ingress possibilita o acesso ao cluster a partir de urls.
+
+O arquivo YAML do Ingress é o `ingress.yml`. Para criá-lo, execute o comando `kubectl create -f ingress.yml`.
+
+Os arquivos do CLusterIP referentes aos pods do Wordpress e do MySQL estão no diretório `services/`. Para criar os serviços a partir deles, execute os comandos:
+
+`kubectl create -f services/wordpress.yml`
+
+`kubectl create -f services/mysql.yml`
+
 
 ### Quinto passo: Deployments
+Configurados os volumes, serviços e o namespace onde será implantada a aplicação no cluster, crie os deployments do Wordpress e do MySQL, que irão criar os containers e garantir a sua disponibilidade utilizando a arquitetura do Kubernetes. Execute os seguintes comandos:
+
+`kubectl create -f deployments/mysql.yml`
+> Recomendamos criar o deployment do MySQL primeiro, para depois criar o da aplicação, pois esta precisará utilizar um banco de dados do MySQL Server
+
+`kubectl create -f deployments/wordpress,yml`
 
 ### Sexto passo: Ingress
 
