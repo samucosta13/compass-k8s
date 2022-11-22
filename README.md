@@ -11,7 +11,7 @@ Implantação de uma aplicação do Wordpress em um cluster com Kubernetes
 ### **Para usuários de distribuições Linux baseadas no Debian**
 * [Instalar o Docker e o containerd](https://docs.docker.com/engine/install/debian/)
   
-  > O containerd é uma alternativa ao _engine_ do Docker, e é necessário por estabelecer comunicação entre o Docker e o Kubernetes
+  > O containerd é uma alternativa ao _engine_ do Docker, e é necessário por estabelecer comunicação entre os containers do Docker e o Kubernetes
 * [Instalar o Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
   
   > Ferramenta de linha de comando do Kubernetes
