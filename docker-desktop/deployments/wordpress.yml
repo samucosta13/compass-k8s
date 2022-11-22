@@ -22,7 +22,7 @@ spec:
           image: wordpress:6.0.2
           envFrom:
             - secretRef:
-                name: wordpress-secret
+                name: wordpress
           volumeMounts:
             - name: mysql-persistent-storage-lab
               mountPath: "/var/www/html"

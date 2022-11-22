@@ -22,7 +22,7 @@ spec:
           image: mysql:8.0.31
           envFrom:
             - secretRef:
-                name: mysql-secret
+                name: mysql
           volumeMounts:
             - name: mysql-persistent-storage-lab
               mountPath: "/var/lib/mysql"

@@ -1,0 +1,3 @@
+secrets/
+mysql-secret.yml
+wordpress-secret.yml

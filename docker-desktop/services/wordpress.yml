@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-svc
+  name: wordpress
   namespace: labwordpress
 spec:
   selector: 
-    app: mysql
+    app: wordpress
   ports:
-    - name: mysql
-      port: 3308
+    - name: http
+      port: 80
   type: ClusterIP

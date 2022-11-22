@@ -11,5 +11,5 @@ spec:
       storage: 3Gi 
   selector:
     matchLabels:
-      type: mysql-pv
+      type: mysql
 

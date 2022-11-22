@@ -11,4 +11,4 @@ spec:
       storage: 3Gi 
   selector:
     matchLabels:
-      app: wordpress-pv
+      app: wordpress
