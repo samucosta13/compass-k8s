@@ -45,15 +45,23 @@ No diretório `namespace/` crie o namespace `labwordpress` a partir do arquivo Y
 ### Segundo passo: Secrets
 Após o namespace `labwordpress` ter sido criado, você precisará editar os templates disponibilizados no diretório `templates/`. Eles são arquivos YAML responsáveis pela criação das variáveis de ambiente que serão utilizadas pelo Wordpress e pelo MySQL. Escolhemos o tipo "Secret" pois ele criptografa o valor das variáveis de ambiente, caso sejam visualizadas por um `kubectl get secret`.
 
-O arquivo `wordpress-secret.yml` refere-se às variáveis de ambiente do Wordpress, ao passo que o arquivo `mysql-secret.yml` refere-se às variáveis do MySQL Server. Defina os valores delas nos arquivos e, caso queira versionar seu ambiente, retire os Secrets do diretório versionado ou adicione o nome deles no .gitignore (ou correspondente), para não vazar informações sensíveis da sua aplicação.
+O arquivo `wordpress.yml` refere-se às variáveis de ambiente do Wordpress, ao passo que o arquivo `mysql.yml` refere-se às variáveis do MySQL Server. Defina os valores delas nos arquivos e, caso queira versionar seu ambiente, retire os Secrets do diretório versionado ou adicione o nome deles no .gitignore (ou correspondente), para não vazar informações sensíveis da sua aplicação.
 
-Após editar os templates e resguardá-los, crie os dois Secrets no seu cluster Kubernetes, executando os seguintes comandos dentro do diretório onde estão os dois arquivos:
+Após editar os templates e resguardá-los, crie os dois Secrets no seu cluster Kubernetes a partir dos dois arquivos YAML, executando os seguintes comandos:
 
-`kubectl create -f wordpress-secret.yml`
+`kubectl create -f [DIRETÓRIO]/wordpress.yml`
 
-`kubectl create -f mysql-secret.yml`
+`kubectl create -f [DIRETÓRIO]/mysql.yml`
 
 ### Terceiro passo: PV e PVC
+Agora, é preciso criar volumes para persistência dos dados dos containers da aplicação e do banco de dados. Uma possível solução é criar Persistent Volumes (PVs) que são diretórios no cluster sincronizados com diretórios dentro dos containers, e também os Persistent Volume Claims (PVCs) resquisições para esses volumes, respectivamente.
+
+Os PVs estão no diretório `persistentVolumes/`, ao passo que os PVCs se encontram em `persistentVolumeClaims/`. Para criá-los, execute os comandos:
+
+`kubectl create -f persistentVolumes/wordpress.yml`
+`kubectl create -f persistentVolumes/mysql.yml`
+`kubectl create -f persistentVolumeClaims/wordpress.yml`
+`kubectl create -f persistentVolumeClaims/mysql.yml`
 
 ### Quarto passo: Services
 
