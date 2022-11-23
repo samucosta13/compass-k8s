@@ -109,7 +109,7 @@ Feitas as configurações no Minikube, crie o Ingress a partir do arquivo `ingre
 
 ## :key: Acessando a aplicação
 
-Após constuir a infraestrutura do cluster, é hora de acessar a interface do Wordpress. Para isso, execute o comando `kubectl get ingress` para obter o IP pelo qual você poderá acessar a aplicação. Caso queira utilizar a URL em vez do endereço IP, você precisará editar o arquivo hosts do seu sistema operacional, inserindo o IP do Ingress e a URL que você definiu no YAML dele.
+Após constuir a infraestrutura do cluster, é hora de acessar a interface do Wordpress. Para isso, execute o comando `kubectl get ingress` para visualizar o IP pelo qual você poderá acessar a aplicação. Caso queira utilizar a URL em vez do endereço IP, você precisará editar o arquivo hosts do seu sistema operacional, inserindo o IP do Ingress e a URL que você definiu no YAML dele.
 
 > No Linux/Debian, você precisará editar o arquivo /etc/hosts com permissão de usuário root!
 
