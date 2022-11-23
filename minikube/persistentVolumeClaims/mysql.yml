@@ -4,12 +4,9 @@ metadata:
   name: mysql
   namespace: labwordpress
 spec:
+  storageClassName: mysql
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 3Gi 
-  selector:
-    matchLabels:
-      type: mysql
-
+      storage: 3Gi

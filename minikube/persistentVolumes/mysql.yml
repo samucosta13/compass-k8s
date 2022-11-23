@@ -2,23 +2,12 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: mysql
-  namespace: labwordpress
-  labels:
-    type: mysql
 spec:
+  storageClassName: mysql
   capacity:
     storage: 3Gi
-  volumeMode: Filesystem
   accessModes:
-  - ReadWriteMany
-  persistentVolumeReclaimPolicy: Delete
-  local:
-    path: /mysql-volume
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/no-proviser
-          operator: In
-          values:
-           - minikube
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/mysql"
+    type: DirectoryOrCreate

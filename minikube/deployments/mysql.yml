@@ -18,11 +18,14 @@ spec:
           persistentVolumeClaim: 
             claimName: mysql
       containers:
-        - name: mysql-container
-          image: mysql:8.0.31
-          envFrom:
-            - secretRef:
-                name: mysql
-          volumeMounts:
-            - name: mysql-persistent-storage-lab
-              mountPath: "/var/lib/mysql"
+      - name: mysql-container
+        image: mysql:8.0.31
+        ports:
+        - containerPort: 3308
+          name: mysql
+        envFrom:
+          - secretRef:
+              name: mysql
+        volumeMounts:
+          - name: mysql-persistent-storage-lab
+            mountPath: "/var/lib/mysql"

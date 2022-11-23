@@ -4,11 +4,9 @@ metadata:
   name: wordpress
   namespace: labwordpress
 spec:
+  storageClassName: wordpress
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 3Gi 
-  selector:
-    matchLabels:
-      app: wordpress
+      storage: 3Gi
