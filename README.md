@@ -127,4 +127,4 @@ docker logs [CONTAINER_ID] 2>&1 | grep "Bootstrap Password:"
 docker logs [CONTAINER_ID] 2>&1 | findstr "Bootstrap Password:"
 ```
 
-Após esses passos, crie a senha para o usuário admin, e daí sua ferramenta de gerenciamento de clusters já estará disponível para uso!
+Após esses passos, crie a senha para o usuário admin, e a sua ferramenta de gerenciamento de clusters já estará disponível para uso!
