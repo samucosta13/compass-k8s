@@ -1,12 +1,6 @@
 # Documentação
 O objetivo desta documentação é exibir o passo a passo para subir uma aplicação do Wordpress em um cluster com Kubernetes, sendo gerenciado pelo Rancher.
 
-Tabela de conteúdos
-=================
-<!--ts-->
-   * [Pré Requisitos](#Pré requisitos do sistema operacional)
-     * [Usuários Windows](#Para usuários do Windows)
-<!--te-->
 
 ## Pré requisitos do sistema operacional
 ### **Para usuários do Windows**
@@ -103,4 +97,18 @@ Para acessarmos a aplicação do Wordpress a partir de um navegador (externo ao 
 Para criar o Ingress, execute o comando `kubectl create -f ingress.yml`.
 
 ## Acessando a aplicação
-Após constuir a infraestrutura do cluster, é hora de acessar a interface do Wordpress. Para isso, abra algum navegador e digite na barra de endereços a URL que se encontra no arquivo do seu Ingress. E pronto! Agora você consegue utilizar sua aplicação do Wordpress tranquilamente!
+Após constuir a infraestrutura do cluster, é hora de acessar a interface do Wordpress. Para isso, abra algum navegador e digite na barra de endereços a URL que se encontra no arquivo do seu Ingress. E pronto! Agora você consegue utilizar sua aplicação do Wordpress tranquilamente!  
+
+## Gerenciando cluster pelo Rancher
+Uma maneira de administrar seu cluster kubernetes é utilizando uma ferramenta opensource chamada [Rancher](https://www.rancher.com/why-rancher).  
+Para fazer isso, é necessário subir um container contendo o Rancher e acessa-lo pelo navegador. Para isso, execute `docker run --privileged -d --restart=unless-stopped -p 8080:80 -p 8443:443 rancher/rancher:stable`. Após isso, você já pode acessar o Rancher pelo *localhost:8443* .  
+Com o comando `docker ps`, obtêm-se o id do container, que é necessário para encontrar a primeira senha de acesso no Rancher. Para isso:
+```
+# Linux
+docker logs [CONTAINER_ID] 2>&1 | grep "Bootstrap Password:"
+
+# Windows
+docker logs [CONTAINER_ID] 2>&1 | findstr "Bootstrap Password:"
+```
+
+Após esses paços, crie a senha para o usuário admin e o sua ferramenta de gerenciamento de clusters já estará disponível para uso.
