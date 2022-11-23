@@ -8,5 +8,5 @@ spec:
     app: mysql
   ports:
     - name: mysql
-      port: 3308
+      port: 3306
   type: ClusterIP
