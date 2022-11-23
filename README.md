@@ -28,7 +28,8 @@ No terminal, inicie um novo cluster com o comando `minikube start`.
 > Caso seja solicitado, execute `minikube delete` antes de iniciar o cluster.
 
 ### Docker Desktop
-...
+No Docker Desktop, acesse Setting>Kubernetes>Enable Kubernetes.
+Após isso, selecione "Apply & Restart"
 
 ## Implantando a infraestrutura da aplicação
 Nesta etapa, você irá utilizar o **kubectl** e o conteúdo deste repositório.
