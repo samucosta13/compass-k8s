@@ -113,7 +113,7 @@ Após constuir a infraestrutura do cluster, é hora de acessar a interface do Wo
 
 > No Linux/Debian, você precisará editar o arquivo /etc/hosts com permissão de usuário root!
 
-Feito isso, abra algum navegador e digite na barra de endereços a URL que se encontra no arquivo do seu Ingress. E pronto! Agora você consegue utilizar sua aplicação do Wordpress tranquilamente!
+Feito isso, abra algum navegador e digite na barra de endereços a URL que se encontra no arquivo do seu Ingress, ou o endereço IP gerado por ele. E pronto! Agora você consegue utilizar sua aplicação do Wordpress tranquilamente!
 
 ## :cow2: Gerenciando cluster pelo Rancher
 Uma maneira de administrar seu cluster kubernetes é utilizando uma ferramenta opensource chamada [Rancher](https://www.rancher.com/why-rancher).  
