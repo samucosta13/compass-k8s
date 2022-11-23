@@ -18,11 +18,14 @@ spec:
           persistentVolumeClaim: 
             claimName: wordpress
       containers:
-        - name: wordpress-container
+        - name: wordpress
           image: wordpress:6.0.2
           envFrom:
             - secretRef:
                 name: wordpress
+          ports:
+          - containerPort: 80
+            name: wordpress
           volumeMounts:
             - name: mysql-persistent-storage-lab
               mountPath: "/var/www/html"
