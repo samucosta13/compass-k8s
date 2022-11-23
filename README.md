@@ -23,7 +23,7 @@ O objetivo desta documentação é exibir o passo a passo para subir uma aplica�
   > Para isso, execute `minikube config set driver docker`
 
 
-## Iniciando o cluster com Kubernetes
+## :hourglass: Iniciando o cluster com Kubernetes
 ### Minikube
 No terminal, inicie um novo cluster com o comando `minikube start`.
 > Caso seja solicitado, execute `minikube delete` antes de iniciar o cluster.
@@ -92,15 +92,18 @@ Configurados os volumes, serviços e o namespace onde será implantada a aplica�
 `kubectl create -f deployments/wordpress.yml`
 
 ### :six: Sexto passo: Ingress
-
+  
 #### **Para usuários do Windows**
+-------------------
 
 Para acessarmos a aplicação do Wordpress a partir de um navegador (externo ao cluster) é preciso viabilizar que POD do Wordpress responda a requisições externas, e uma maneira de fazer isso é utilizar um Ingress. No diretório corrente (`docker-dektop/`), existe um arquivo YAML que define um Ingress, que é o `ingress.yml`. Neste arquivo, encontra-se uma URL a partir da qual o acesso ao Wordpress poderá ser feito. Você pode editá-la!  
 
 Primeiramente crie o Ingress Controller com o comando `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml`  
 Logo após, crie o Ingress: `kubectl create -f ingress.yml`.
-
+  
+    
 #### **Para usuários de distribuições Linux baseadas no Debian**
+------------------- 
 
 Para acessarmos a aplicação do Wordpress a partir de um navegador (externo ao cluster) é preciso viabilizar que POD do Wordpress responda a requisições externas, e uma maneira de fazer isso é utilizar um Ingress. Usuários do Minikube precisam habilitar o NGINX Ingress Controller no seu Minikube. Isso pode ser feito com o comando `minikube addons enable ingress`. 
 
