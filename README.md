@@ -92,12 +92,28 @@ Configurados os volumes, serviços e o namespace onde será implantada a aplica�
 `kubectl create -f deployments/wordpress.yml`
 
 ### :six: Sexto passo: Ingress
-Para acessarmos a aplicação do Wordpress a partir de um navegador (externo ao cluster) é preciso viabilizar que POD do Wordpress responda a requisições externas, e uma maneira de fazer isso é utilizar um Ingress. No diretório corrente (`docker-dektop/` ou `minikube/`), existe um arquivo YAML que define um Ingress, que é o `ingress.yml`. Neste arquivo, encontra-se uma URL a partir da qual o acesso ao Wordpress será feito. Você pode editá-la!
+
+**Para usuários do Windows**
+
+Para acessarmos a aplicação do Wordpress a partir de um navegador (externo ao cluster) é preciso viabilizar que POD do Wordpress responda a requisições externas, e uma maneira de fazer isso é utilizar um Ingress. No diretório corrente (`docker-dektop/`), existe um arquivo YAML que define um Ingress, que é o `ingress.yml`. Neste arquivo, encontra-se uma URL a partir da qual o acesso ao Wordpress poderá ser feito. Você pode editá-la!
 
 Para criar o Ingress, execute o comando `kubectl create -f ingress.yml`.
 
+**Para usuários de distribuições Linux baseadas no Debian**
+
+Para isso, habilite o NGINX Ingress Controller no seu Minikube, com o comando `minikube addons enable ingress`. Depois, execute este comando: `kubectl get pods -n ingress-nginx`. A saída deste útlimo comando deve conter pelo menos um pod no estado **running** com o início do nome igual a `ingress-nginx-controller` ou `nginx-ingress-controller`.
+
+Feitas as configurações no Minikube, crie o Ingress a partir do arquivo `ingress.yml` disponível no diretório corrente (`minikube/`).
+
+Execute o comando `kubectl create -f ingress.yml`.
+
 ## :key: Acessando a aplicação
-Após constuir a infraestrutura do cluster, é hora de acessar a interface do Wordpress. Para isso, abra algum navegador e digite na barra de endereços a URL que se encontra no arquivo do seu Ingress. E pronto! Agora você consegue utilizar sua aplicação do Wordpress tranquilamente!  
+
+Após constuir a infraestrutura do cluster, é hora de acessar a interface do Wordpress. Para isso, execute o comando `kubectl get ingress` para obter o IP pelo qual você poderá acessar a aplicação. Caso queira utilizar a URL em vez do endereço IP, você precisará editar o arquivo hosts do seu sistema operacional, inserindo o IP do Ingress e a URL que você definiu no YAML dele.
+
+> No Linux/Debian, você precisará editar o arquivo /etc/hosts com permissão de usuário root!
+
+Feito isso, abra algum navegador e digite na barra de endereços a URL que se encontra no arquivo do seu Ingress. E pronto! Agora você consegue utilizar sua aplicação do Wordpress tranquilamente!
 
 ## :cow2: Gerenciando cluster pelo Rancher
 Uma maneira de administrar seu cluster kubernetes é utilizando uma ferramenta opensource chamada [Rancher](https://www.rancher.com/why-rancher).  
