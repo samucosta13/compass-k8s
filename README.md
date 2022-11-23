@@ -7,7 +7,7 @@ O objetivo desta documentação é exibir o passo a passo para subir uma aplica�
 * Instalar o [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/)
 * Habilitar o Hyper-V
   
-  Para verificar se o Hyper-V está habilitado, abra o prompt de comando como administrador e execute o comando `bcdedit`. Se o Hyper-V estiver desabilitado, execute `bcdedit /set hypervisorlaunchtype auto` no prompt de comando aberto como administrador, e reinicie seu computador.
+ > Para verificar se o Hyper-V está habilitado, abra o prompt de comando como administrador e execute o comando `bcdedit`. Se o Hyper-V estiver desabilitado, execute `bcdedit /set hypervisorlaunchtype auto` no prompt de comando aberto como administrador, e reinicie seu computador.
 
 ### **Para usuários de distribuições Linux baseadas no Debian**
 * Instalar o [Docker e o containerd](https://docs.docker.com/engine/install/debian/)
