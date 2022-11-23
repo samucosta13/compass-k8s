@@ -117,7 +117,7 @@ Feito isso, abra algum navegador e digite na barra de endereços a URL que se en
 
 ## :cow2: Gerenciando cluster pelo Rancher
 Uma maneira de administrar seu cluster kubernetes é utilizando uma ferramenta opensource chamada [Rancher](https://www.rancher.com/why-rancher).  
-Para fazer isso, é necessário subir um container contendo o Rancher e acessa-lo pelo navegador. Para isso, execute `docker run --privileged -d --restart=unless-stopped -p 8080:80 -p 8443:443 rancher/rancher:stable`. Após isso, você já pode acessar o Rancher pelo *localhost:8443* .  
+Para fazer isso, é necessário subir um container contendo o Rancher e acessá-lo pelo navegador. Para isso, execute `docker run --privileged -d --restart=unless-stopped -p 8080:80 -p 8443:443 rancher/rancher:stable`. Após isso, você já pode acessar o Rancher pelo *localhost:8443* .  
 Com o comando `docker ps`, obtêm-se o id do container, que é necessário para encontrar a primeira senha de acesso no Rancher. Para isso:
 ```
 # Linux
