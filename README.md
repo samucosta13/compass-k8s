@@ -101,11 +101,11 @@ Para criar o Ingress, execute o comando `kubectl create -f ingress.yml`.
 
 **Para usuários de distribuições Linux baseadas no Debian**
 
-Para isso, habilite o NGINX Ingress Controller no seu Minikube, com o comando `minikube addons enable ingress`. Depois, execute este comando: `kubectl get pods -n ingress-nginx`. A saída deste útlimo comando deve conter pelo menos um pod no estado **running** com o início do nome igual a `ingress-nginx-controller` ou `nginx-ingress-controller`.
+Para acessarmos a aplicação do Wordpress a partir de um navegador (externo ao cluster) é preciso viabilizar que POD do Wordpress responda a requisições externas, e uma maneira de fazer isso é utilizar um Ingress. Usuários do Minikube precisam habilitar o NGINX Ingress Controller no seu Minikube. Isso pode ser feito com o comando `minikube addons enable ingress`. 
 
-Feitas as configurações no Minikube, crie o Ingress a partir do arquivo `ingress.yml` disponível no diretório corrente (`minikube/`).
+Logo após, execute `kubectl get pods -n ingress-nginx`. A saída deste útlimo comando deve conter pelo menos um pod no estado **running** com o início do nome igual a `ingress-nginx-controller` ou `nginx-ingress-controller`.
 
-Execute o comando `kubectl create -f ingress.yml`.
+Feitas as configurações no Minikube, crie o Ingress a partir do arquivo `ingress.yml` disponível no diretório corrente (`minikube/`), executando o comando `kubectl create -f ingress.yml`.
 
 ## :key: Acessando a aplicação
 
